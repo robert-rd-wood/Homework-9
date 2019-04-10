@@ -220,7 +220,7 @@ SELECT title
 FROM film
 WHERE (title LIKE 'K%' OR title LIKE 'Q%')
 AND language_id IN
-	(
+    (
     SELECT language_id
     FROM language
     WHERE name = 'English'
@@ -235,14 +235,14 @@ SELECT first_name AS 'First Name', last_name AS 'Last Name'
 FROM actor
 WHERE actor_id IN
 (
-	SELECT actor_id
+    SELECT actor_id
     FROM film_actor
     WHERE film_id IN
-	(
-		SELECT film_id
-		FROM film
-		WHERE title = 'ALONE TRIP'
-	)
+    (
+        SELECT film_id
+        FROM film
+        WHERE title = 'ALONE TRIP'
+    )
 );
 
 /*------------------------------------------------------------------------------------------------------------------------*/
@@ -253,11 +253,11 @@ WHERE actor_id IN
 SELECT first_name AS 'First Name', last_name AS 'Last Name', email AS 'E-mail'
 FROM customer
 INNER JOIN address
-	USING (address_id)
+    USING (address_id)
 INNER JOIN city
-	USING (city_id)
+    USING (city_id)
 INNER JOIN country
-	USING (country_id)
+    USING (country_id)
 WHERE country = 'Canada';
 
 /*------------------------------------------------------------------------------------------------------------------------*/
@@ -269,14 +269,14 @@ SELECT title AS 'Title'
 FROM film
 WHERE film_id IN
 (
-	SELECT film_id
-	FROM film_category
-	WHERE category_id IN
-	(
-		SELECT category_id
-		FROM category
-		WHERE name = 'Family'
-	)
+    SELECT film_id
+    FROM film_category
+    WHERE category_id IN
+    (
+        SELECT category_id
+        FROM category
+        WHERE name = 'Family'
+    )
 );
 
 /*------------------------------------------------------------------------------------------------------------------------*/
@@ -286,9 +286,9 @@ WHERE film_id IN
 SELECT title as 'Title', COUNT(inventory_id) AS 'Total Rentals'
 FROM rental
 INNER JOIN inventory
-	USING (inventory_id)
+    USING (inventory_id)
 INNER JOIN film
-	USING (film_id)
+    USING (film_id)
 GROUP BY title
 ORDER BY COUNT(inventory_id) DESC;
 
@@ -299,17 +299,17 @@ ORDER BY COUNT(inventory_id) DESC;
 SELECT CONCAT(city,', ',country) AS 'Store', SUM(amount) AS 'Total Business'
 FROM payment
 JOIN rental
-	USING (rental_id)
+    USING (rental_id)
 JOIN inventory
-	USING (inventory_id)
+    USING (inventory_id)
 JOIN store
-	USING (store_id)
+    USING (store_id)
 JOIN address
-	USING (address_id)
+    USING (address_id)
 JOIN city
-	USING (city_id)
+    USING (city_id)
 JOIN country
-	USING (country_id)
+    USING (country_id)
 GROUP BY CONCAT(city,', ',country);
 
 /*------------------------------------------------------------------------------------------------------------------------*/
@@ -319,11 +319,11 @@ GROUP BY CONCAT(city,', ',country);
 SELECT store_id AS 'Store ID', city AS 'City', country as 'Country'
 FROM store
 JOIN address
-	USING (address_id)
+    USING (address_id)
 JOIN city
-	USING (city_id)
+    USING (city_id)
 JOIN country
-	USING (country_id);
+    USING (country_id);
 
 /*------------------------------------------------------------------------------------------------------------------------*/
     
@@ -333,13 +333,13 @@ JOIN country
 SELECT name AS 'Genre', SUM(amount) AS 'Gross Revenue'
 FROM category
 JOIN film_category
-	USING (category_id)
+    USING (category_id)
 JOIN inventory
-	USING (film_id)
+    USING (film_id)
 JOIN rental
-	USING (inventory_id)
+    USING (inventory_id)
 JOIN payment
-	USING (rental_id)
+    USING (rental_id)
 GROUP BY name
 ORDER BY SUM(amount) DESC
 LIMIT 5;
@@ -354,13 +354,13 @@ CREATE VIEW top_five_genres AS
 SELECT name AS 'Genre', SUM(amount) AS 'Gross Revenue'
 FROM category
 JOIN film_category
-	USING (category_id)
+    USING (category_id)
 JOIN inventory
-	USING (film_id)
+    USING (film_id)
 JOIN rental
-	USING (inventory_id)
+    USING (inventory_id)
 JOIN payment
-	USING (rental_id)
+    USING (rental_id)
 GROUP BY name
 ORDER BY SUM(amount) DESC
 LIMIT 5;
