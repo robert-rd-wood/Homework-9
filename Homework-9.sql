@@ -126,6 +126,7 @@ UPDATE actor
 SET first_name = 'HARPO'
 WHERE first_name = 'GROUCHO' 
 AND last_name = 'WILLIAMS';
+
 # View results
 SELECT * FROM actor
 WHERE first_name = 'GROUCHO'
@@ -217,7 +218,8 @@ WHERE title IN
 (
 SELECT title
 FROM film
-WHERE (title LIKE 'K%' OR title LIKE 'Q%') AND language_id IN
+WHERE (title LIKE 'K%' OR title LIKE 'Q%')
+AND language_id IN
 	(
     SELECT language_id
     FROM language
@@ -294,7 +296,7 @@ ORDER BY COUNT(inventory_id) DESC;
 
 ### 7f. Write a query to display how much business, in dollars, each store brought in.
 
-SELECT CONCAT(city,', ',country) AS 'Store',SUM(amount) AS 'Total Business'
+SELECT CONCAT(city,', ',country) AS 'Store', SUM(amount) AS 'Total Business'
 FROM payment
 JOIN rental
 	USING (rental_id)
@@ -372,3 +374,5 @@ SELECT * FROM top_five_genres;
 
 ### 8c. You find that you no longer need the view top_five_genres. Write a query to delete it.
 DROP VIEW top_five_genres;
+
+/*------------------------------------------------------------------------------------------------------------------------*/
