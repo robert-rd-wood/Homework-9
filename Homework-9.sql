@@ -216,14 +216,14 @@ SELECT title AS 'Title'
 FROM film
 WHERE title IN
 (
-SELECT title
-FROM film
-WHERE (title LIKE 'K%' OR title LIKE 'Q%')
-AND language_id IN
+    SELECT title
+    FROM film
+    WHERE (title LIKE 'K%' OR title LIKE 'Q%')
+    AND language_id IN
     (
-    SELECT language_id
-    FROM language
-    WHERE name = 'English'
+        SELECT language_id
+        FROM language
+        WHERE name = 'English'
     )
 );
 
