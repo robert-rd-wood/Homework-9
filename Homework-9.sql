@@ -1,12 +1,12 @@
 /*
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'																				'
-' CWRU Data Analytics												Robert Wood '
-'																				'
-'																				'
-' Unit 9 | Assignment - SQL/Sakila									  4/13/2019 '
-'																				'
-'																				'
+'                                                                               '
+' CWRU Data Analytics                                               Robert Wood '
+'                                                                               '
+'                                                                               '
+' Unit 9 | Assignment - SQL/Sakila                                    4/13/2019 '
+'                                                                               '
+'                                                                               '
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 */
 
@@ -62,7 +62,8 @@ WHERE last_name LIKE '%GEN%';
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-### 2c. Find all actors whose last names contain the letters LI. This time, order the rows by last name and first name, in that order:
+### 2c. Find all actors whose last names contain the letters LI.
+### This time, order the rows by last name and first name, in that order:
 
 SELECT first_name AS 'First Name', last_name AS 'Last Name'
 FROM actor
@@ -118,7 +119,8 @@ HAVING COUNT(last_name) > 1;
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-### 4c. The actor HARPO WILLIAMS was accidentally entered in the actor table as GROUCHO WILLIAMS. Write a query to fix the record.
+### 4c. The actor HARPO WILLIAMS was accidentally entered in the actor table as GROUCHO WILLIAMS.
+### Write a query to fix the record.
 
 UPDATE actor
 SET first_name = 'HARPO'
@@ -153,7 +155,8 @@ SHOW CREATE TABLE address;
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-### 6a. Use JOIN to display the first and last names, as well as the address, of each staff member. Use the tables staff and address:
+### 6a. Use JOIN to display the first and last names, as well as the address, of each staff member.
+### Use the tables staff and address:
 
 SELECT first_name AS 'First Name', last_name AS 'Last Name', address AS 'Address'
 FROM staff
@@ -192,7 +195,8 @@ WHERE f.title = 'HUNCHBACK IMPOSSIBLE';
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-### 6e. Using the tables payment and customer and the JOIN command, list the total paid by each customer. List the customers alphabetically by last name:
+### 6e. Using the tables payment and customer and the JOIN command, list the total paid by each customer.
+### List the customers alphabetically by last name:
 
 SELECT last_name AS 'Last Name', first_name AS 'First Name', SUM(amount) AS 'Total Paid'
 FROM customer
@@ -203,8 +207,9 @@ ORDER BY last_name ASC;
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-### 7a. The music of Queen and Kris Kristofferson have seen an unlikely resurgence. As an unintended consequence, films starting with the letters K and Q
-### have also soared in popularity. Use subqueries to display the titles of movies starting with the letters K and Q whose language is English.
+### 7a. The music of Queen and Kris Kristofferson have seen an unlikely resurgence. As an unintended consequence,
+### films starting with the letters K and Q have also soared in popularity. Use subqueries to display the titles
+### of movies starting with the letters K and Q whose language is English.
 
 SELECT title AS 'Title'
 FROM film
@@ -240,8 +245,8 @@ WHERE actor_id IN
 
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-### 7c. You want to run an email marketing campaign in Canada, for which you will need the names and email addresses of all Canadian customers.
-### Use joins to retrieve this information.
+### 7c. You want to run an email marketing campaign in Canada, for which you will need the names and email addresses
+### of all Canadian customers. Use joins to retrieve this information.
 
 SELECT first_name AS 'First Name', last_name AS 'Last Name', email AS 'E-mail'
 FROM customer
@@ -340,7 +345,8 @@ LIMIT 5;
 /*------------------------------------------------------------------------------------------------------------------------*/
 
 ### 8a. In your new role as an executive, you would like to have an easy way of viewing the Top five genres by gross revenue.
-### Use the solution from the problem above to create a view. If you haven't solved 7h, you can substitute another query to create a view.
+### Use the solution from the problem above to create a view. If you haven't solved 7h, you can substitute another query
+### to create a view.
 
 CREATE VIEW top_five_genres AS
 SELECT name AS 'Genre', SUM(amount) AS 'Gross Revenue'
